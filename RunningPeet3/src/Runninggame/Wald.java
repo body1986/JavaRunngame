@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Runninggame;
 
 import java.awt.*;
@@ -10,7 +5,7 @@ import java.awt.image.ImageObserver;
 
 /**
  *
- * @author rossmann
+ * @author Sven Rossmann
  */
 public class Wald {
 	private int yPos = 0;
@@ -22,6 +17,12 @@ public class Wald {
 	private ImageObserver myImageObserver = null;
 	private SpielParameter mySpielParameter = null;	
 
+	/**
+	 * Generiert den Wald aus den Baum Objekten
+	 * @param io
+	 * @param mySpielParameter
+	 * @param yPos
+	 */
 	public Wald(ImageObserver io, SpielParameter mySpielParameter,int yPos) {
 		this.mySpielParameter = mySpielParameter;
 		this.myImageObserver = io;
@@ -35,10 +36,18 @@ public class Wald {
 		}
 	}
 
+	/**
+	 * Animiert den Wald
+	 * @param myGraphic
+	 */
 	public void Animi(Graphics myGraphic) {
 		zeichneWald(myGraphic);
 	}
 
+	/**
+	 * Zeichnet den Wald mit den einzelnen Baum Objekten
+	 * @param myGraphic
+	 */
 	public void zeichneWald(Graphics myGraphic) {
 		int Baumbreite = xBlockFaktor*mySpielParameter.VirtuelleBlockgroesse;
 		BlockNummer = mySpielParameter.GlobalePosition / Baumbreite;
@@ -56,7 +65,4 @@ public class Wald {
 		}
 
 	}
-
-	
-
 }

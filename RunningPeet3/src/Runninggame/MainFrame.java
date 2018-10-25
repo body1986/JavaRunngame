@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Runninggame;
 
 import java.awt.Dimension;
@@ -16,7 +11,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author rossmann
+ * @author Sven Rossmann
  */
 public class MainFrame extends javax.swing.JFrame {
 
@@ -49,30 +44,23 @@ public class MainFrame extends javax.swing.JFrame {
 		// ----------------------------------------------------------------------
 		myJPanel = new JPanel() {
 			
-			
 			private static final long serialVersionUID = 1L;
-
 			@Override
-			public void paint(final Graphics g) {
-//				Graphics2D g2d = (Graphics2D) g;
-//				g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3f));				
+			public void paint(final Graphics g) {				
 				super.paint(g);				
 				ZeicheLeinwand(g);
 			};
+			
 		};
 		
-		
-		
-		mySpielParameter.setGroesse(getContentPane().getSize().height,getContentPane().getSize().width);
-		
+		mySpielParameter.setGroesse(getContentPane().getSize().height,getContentPane().getSize().width);		
 		myHimmel = new Himmel(this, mySpielParameter, 0);
 		myFigur = new Figur(this, mySpielParameter);
 		myFigur.setPosition(true, mySpielParameter.xFigur1, mySpielParameter.yFigur1);
 		myWald = new Wald(this,mySpielParameter,mySpielParameter.yWald);
-		myFadenkreuz = new Fadenkreuz(600, 300, this);// Fadenkreuz(this, mySpielParameter);
+		myFadenkreuz = new Fadenkreuz(600, 300, this);
 		myWeg = new Weg(this,mySpielParameter,mySpielParameter.yWeg);
 
-		//myHimmel.Animi(myJPanel.getGraphics());
 		// ----------------------------------------------------------------------
 		// Tastatureingaben
 		// ----------------------------------------------------------------------
@@ -83,8 +71,7 @@ public class MainFrame extends javax.swing.JFrame {
 			}
 
 			@Override
-			public void keyPressed(KeyEvent e) {
-				System.out.println("2" + e.getKeyChar());
+			public void keyPressed(KeyEvent e) {				
 				if (e.getKeyCode() == KeyEvent.VK_SPACE) {					
 					myFigur.setSprung(true);		
 					mySpielParameter.sprung=1;
@@ -105,7 +92,6 @@ public class MainFrame extends javax.swing.JFrame {
 
 			@Override
 			public void keyReleased(KeyEvent e) {
-//				System.out.println("3" + e.getKeyChar());
 				
 				if (e.getKeyCode() == KeyEvent.VK_SPACE) {					
 					myFigur.setSprung(false);			
@@ -132,22 +118,17 @@ public class MainFrame extends javax.swing.JFrame {
 		myWeg.Animi(g);		
 		myFadenkreuz.paintcreep(g);
 		
+		// Sprung Animation wird ausgeführt
 		if (myFigur.isSprung()==true) {
 			int Pos = myFigur.AnimiSprung(g);	
 		}
 		else {
 			int Pos = myFigur.Animi(g);	
 		}
-		
-		
-		
-//		if (Pos > 0) {
-//			mySpielParameter.GlobalPositionBerechnen();
-//		}
 	}
 
 	// ----------------------------------------------------------------------
-	// Auf der Leinwand zeichnen
+	// Timer
 	// ----------------------------------------------------------------------
 	
 	public void StartTimer() {
@@ -192,22 +173,14 @@ public class MainFrame extends javax.swing.JFrame {
 		setLocationRelativeTo(null);
 	}
 
-	private void FormGroesseGeaendert(java.awt.event.ComponentEvent evt) {// GEN-FIRST:event_FormGroesseGeaendert
-		
+	private void FormGroesseGeaendert(java.awt.event.ComponentEvent evt) {// GEN-FIRST:event_FormGroesseGeaendert		
 		myGraphics = evt.getComponent().getGraphics();
-//		try {
-//			g.drawImage(ImageIO.read(getClass().getClassLoader().getResource("Ressourcen/Himmel.png")), 0, 0, this);			
-//		} catch (IOException e) {
-//			// TODO Automatisch generierter Erfassungsblock
-//			e.printStackTrace();
-//		}
-		
 		if (mySpielParameter!=null) {
 			myJPanel.setSize(this.getWidth(),this.getHeight());
 			mySpielParameter.setGroesse(getContentPane().getSize().height,getContentPane().getSize().width);
 		}
 
-	}// GEN-LAST:event_FormGroesseGeaendert
+	}
 
 	// ----------------------------------------------------------------------
 	// Hauptfunktion
@@ -215,7 +188,4 @@ public class MainFrame extends javax.swing.JFrame {
 	public static void main(String args[]) {
 		MainFrame myFrame = new MainFrame();
 	}
-
-	// Variables declaration - do not modify//GEN-BEGIN:variables
-	// End of variables declaration//GEN-END:variables
 }

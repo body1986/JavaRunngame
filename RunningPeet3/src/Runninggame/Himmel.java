@@ -11,7 +11,7 @@ import javax.imageio.ImageIO;
 
 /**
  *
- * @author rossmann
+ * @author Sven Rossmann
  */
 public class Himmel {
 	private int yAnzBloecke = 8;
@@ -35,14 +35,7 @@ public class Himmel {
 		}
 	}
 
-	public void Animi(Graphics myGraphic) {
-		
-//		int x = mySpielParameter.myKoordinatensystem.getFrameX(1);
-//		int y = mySpielParameter.myKoordinatensystem.getFrameY(800);
-		
+	public void Animi(Graphics myGraphic) {		
 		myGraphic.drawImage(Himmelobject,0, 0, xAnzBloecke*mySpielParameter.SpielblockLaenge, yAnzBloecke*mySpielParameter.SpielblockHoehe, myImageObserver);
 	}
-
-	
-	 
 }

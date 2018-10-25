@@ -4,6 +4,9 @@ public class SpielParameter {
 
 	public Koordinatensystem myKoordinatensystem = null;
 	
+	//----------------------------------------------------------------------------------------------------------------------------------
+	// Berrechnungsparameter nicht ändern
+	//----------------------------------------------------------------------------------------------------------------------------------
 	private int Weg = 0;
 	private int Pos = 0;
 	public int Richtung = 1;
@@ -12,6 +15,7 @@ public class SpielParameter {
 	public int SpielblockHoehe = 0;
 	public int FrameHoehe = 0;
 	public int FrameLaenge = 0;
+	
 	//----------------------------------------------------------------------------------------------------------------------------------
 	// Globale Spieleparameter
 	//----------------------------------------------------------------------------------------------------------------------------------
@@ -24,16 +28,23 @@ public class SpielParameter {
 	public int yWeg = 100;
 	public int yWald = 200;
 	//----------------------------------------------------------------------------------------------------------------------------------
+	// kollision's Parameter nicht ändern
+	//----------------------------------------------------------------------------------------------------------------------------------
 	public int aktionPosition =0; 
 	public int sprung=0;
 	
 	
-	
+	/**
+	 * Koordinatensystem erstellen/berechnen
+	 */
 	public SpielParameter() {
 		myKoordinatensystem = new Koordinatensystem(xSpielRaster, ySpielRaster,SpielblockLaenge,SpielblockHoehe,VirtuelleBlockgroesse);
 	}
 
-	
+	/**
+	 * Berechnung der Aktuellen Position von den Objekten 
+	 * @param Richtung
+	 */
 	public void GlobalPositionBerechnen(String Richtung) {
 		if (Richtung == "R") { 
 			if (GlobalePosition < (AnzSpielbloecke * SpielblockLaenge))
@@ -43,11 +54,13 @@ public class SpielParameter {
 			if (GlobalePosition > 0)
 				GlobalePosition--;
 		}
-		Kolisionspruefung();
+		Kollisionspruefung();
 	}
 
-	
-	private void Kolisionspruefung() {
+	/**
+	 * Prüft die Einzelnen Koordinaten von den Weg Objekten und erkennt eine Kollision 
+	 */
+	private void Kollisionspruefung() {
 		
 		switch (aktionPosition) {
 		case 2:

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Runninggame;
 
 import java.awt.*;
@@ -15,7 +10,7 @@ import javax.imageio.ImageIO;
 
 /**
  *
- * @author rossmann
+ * @author Sven Rossmann
  */
 public class Figur {
 
@@ -107,20 +102,12 @@ public class Figur {
 	}	
 	
 	
-	
-	
-	
-	
-	
-	
 	public void setSpeed(int Speed) {
 		mySpeed = Speed;
 		Verzoegerung = 0;
 	}
 
 	public void setPosition(boolean visible, int iXPos, int iYPos) {
-//		this.iXPos = mySpielParameter.myKoordinatensystem.getFrameX(iXPos);
-//		this.iYPos = mySpielParameter.myKoordinatensystem.getFrameY(iYPos)-((yAnzBloecke)*mySpielParameter.SpielblockHoehe);
 		this.iXPos = iXPos;
 		this.iYPos = iYPos;
 		this.visible = visible;
