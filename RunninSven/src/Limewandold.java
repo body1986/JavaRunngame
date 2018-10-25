@@ -7,11 +7,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Limewand extends JFrame {
+public class Limewandold extends JFrame {
 	
 	private JPanel contentPane;
 
-	Limewand(int white, int higt,int x, int y) {
+	Limewandold(int white, int higt,int x, int y) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				
 		setBounds(x,y, white, higt);

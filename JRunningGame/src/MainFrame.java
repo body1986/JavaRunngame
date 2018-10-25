@@ -88,9 +88,9 @@ public class MainFrame extends JFrame {
 		        int z1 =0;
 		        
 		        try {
-		            iMg = ImageIO.read(new File("C:\\Users\\srossmann.ISR\\Pictures\\AWE Bilder\\ball.png")); 
-		            iMg2 = ImageIO.read(new File("C:\\Users\\srossmann.ISR\\Pictures\\AWE Bilder\\ball2.jpg")); 
-		            iMg3 = ImageIO.read(new File("C:\\Users\\srossmann.ISR\\Pictures\\AWE Bilder\\Ball3.png"));
+		            iMg = ImageIO.read(new File("C:\\Users\\sven\\Pictures\\ball.png")); 
+		            iMg2 = ImageIO.read(new File("C:\\Users\\sven\\Pictures\\ball.png")); 
+		            iMg3 = ImageIO.read(new File("C:\\Users\\sven\\Pictures\\ball.png"));
 		            Graphics gw = canvas.getGraphics();
 		            canvas.getGraphics().drawImage(iMg3,z1, 10, null);
 		            canvas.setBackground(Color.RED);
