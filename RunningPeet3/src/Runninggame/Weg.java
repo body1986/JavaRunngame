@@ -46,14 +46,18 @@ public class Weg {
 	 * @param myGraphic
 	 */
 	public void zeichneWeg(Graphics myGraphic) {		
-		int Wegbreite = xBlockFaktor*mySpielParameter.VirtuelleBlockgroesse;
-		WegNummer = mySpielParameter.GlobalePosition / Wegbreite;
-		int iXPos = -Wegbreite + (-(mySpielParameter.GlobalePosition - (WegNummer * Wegbreite)));
-		
-		for (int i = 0; i < mySpielParameter.xSpielRaster+2; i++) {
-			WegLinie[WegNummer + i].paint(myGraphic, iXPos, yPos);
-			iXPos = iXPos + Wegbreite;
+		try {
+			int Wegbreite = xBlockFaktor*mySpielParameter.VirtuelleBlockgroesse;
+			WegNummer = mySpielParameter.GlobalePosition / Wegbreite;
+			int iXPos = -Wegbreite + (-(mySpielParameter.GlobalePosition - (WegNummer * Wegbreite)));
+			
+			for (int i = 0; i < mySpielParameter.xSpielRaster+2; i++) {
+				WegLinie[WegNummer + i].paint(myGraphic, iXPos, yPos);
+				iXPos = iXPos + Wegbreite;
+			}
+			mySpielParameter.aktionPosition= WegLinie[WegNummer+6].getType();
+		} catch (Exception e) {			
+			
 		}
-		mySpielParameter.aktionPosition= WegLinie[WegNummer+6].getType();
 	}	 
 }

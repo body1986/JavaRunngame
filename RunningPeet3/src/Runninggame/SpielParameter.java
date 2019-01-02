@@ -19,7 +19,7 @@ public class SpielParameter {
 	//----------------------------------------------------------------------------------------------------------------------------------
 	// Globale Spieleparameter
 	//----------------------------------------------------------------------------------------------------------------------------------
-	public int AnzSpielbloecke = 500; 		// Größe der Ebene in Spieleblöcke
+	public int AnzSpielbloecke = 900; 		// Größe der Ebene in Spieleblöcke
 	public int VirtuelleBlockgroesse = 100; // Rastergröße 100 x 100
 	public int xSpielRaster = 10; 			// X Rastegröße 
 	public int ySpielRaster = 8;			// Y Rastergröße

@@ -35,35 +35,60 @@ public class MainFrame extends javax.swing.JFrame {
 	@SuppressWarnings("deprecation")
 	public MainFrame() {
 		initComponents();
-
+		
+		// ----------------------------------------------------------------------
+		// Erstelle Spiele Parameter
+		// ----------------------------------------------------------------------
 		mySpielParameter = new SpielParameter();
 		
 		
 		// ----------------------------------------------------------------------
-		// Ein neues JPanel zum zeichnen
+		// Das haupt JPanel zum Spielen zeichnen
 		// ----------------------------------------------------------------------
-		myJPanel = new JPanel() {
-			
+		myJPanel = new JPanel() {			
 			private static final long serialVersionUID = 1L;
 			@Override
 			public void paint(final Graphics g) {				
 				super.paint(g);				
 				ZeicheLeinwand(g);
-			};
-			
+			};			
 		};
 		
+		// ----------------------------------------------------------------------
+		// Lade Spiel Objekte
+		// ----------------------------------------------------------------------
+		initialisiereSpielObjekte();
+
+		// ----------------------------------------------------------------------
+		// Tastatureingaben
+		// ----------------------------------------------------------------------
+		tastatureingaben();
+		
+		// ----------------------------------------------------------------------
+		// Füge das Panel zur Form hinzu und starte das Spiel
+		// ----------------------------------------------------------------------
+		getContentPane().add(myJPanel);
+		pack();
+		setVisible(true);
+		getContentPane().setFocusable(true);
+		
+		GUIMenue gmeue = new GUIMenue();
+		gmeue.setVisible(true);
+		
+		StartTimer();
+	}
+
+	private void initialisiereSpielObjekte() {
 		mySpielParameter.setGroesse(getContentPane().getSize().height,getContentPane().getSize().width);		
 		myHimmel = new Himmel(this, mySpielParameter, 0);
 		myFigur = new Figur(this, mySpielParameter);
 		myFigur.setPosition(true, mySpielParameter.xFigur1, mySpielParameter.yFigur1);
 		myWald = new Wald(this,mySpielParameter,mySpielParameter.yWald);
-		myFadenkreuz = new Fadenkreuz(600, 300, this);
+		myFadenkreuz = new Fadenkreuz(800, 380, this);
 		myWeg = new Weg(this,mySpielParameter,mySpielParameter.yWeg);
+	}
 
-		// ----------------------------------------------------------------------
-		// Tastatureingaben
-		// ----------------------------------------------------------------------
+	private void tastatureingaben() {
 		getContentPane().addKeyListener(new KeyListener() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -99,14 +124,6 @@ public class MainFrame extends javax.swing.JFrame {
 				}				
 			}
 		});
-		// ----------------------------------------------------------------------
-		//
-		// ----------------------------------------------------------------------
-		getContentPane().add(myJPanel);
-		pack();
-		setVisible(true);
-		getContentPane().setFocusable(true);
-		StartTimer();
 	}
 
 	// ----------------------------------------------------------------------
@@ -128,9 +145,8 @@ public class MainFrame extends javax.swing.JFrame {
 	}
 
 	// ----------------------------------------------------------------------
-	// Timer
-	// ----------------------------------------------------------------------
-	
+	// Timer laufgeschwindigkeit
+	// ----------------------------------------------------------------------	
 	public void StartTimer() {
 		Timer timer = new Timer();
 		timer.schedule(new TimerTask() {
@@ -140,20 +156,23 @@ public class MainFrame extends javax.swing.JFrame {
 			}
 		}, 0, 10);
 
+	// ----------------------------------------------------------------------
+	// Timer Spielstart
+	// ----------------------------------------------------------------------
 		Timer timer2 = new Timer();
 		timer2.schedule(new TimerTask() {
 			@Override
-			public void run() {
+			public void run() {				
 				myFigur.StartAnimi("R");
 			};
-		}, 0, 50);
+		}, 0, 5);
 	}
 	
 	@SuppressWarnings("unchecked")
 	
 	private void initComponents() {
 
-		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 		setSize(new java.awt.Dimension(600, 400));
 		addComponentListener(new java.awt.event.ComponentAdapter() {
 			public void componentResized(java.awt.event.ComponentEvent evt) {

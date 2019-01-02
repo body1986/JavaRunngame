@@ -26,8 +26,10 @@ public class Figur {
 	private int mySpeed = 10;
 	private boolean myAnimiStart = false;
 	private static final String ImagePathLinks = "Ressourcen/Figur1/LaufenLinks/Bild";
-	private static final String ImagePathRechts = "Ressourcen/Figur1/LaufenRechts/Figur";
-	private static final String ImagePathRechtsSprung = "Ressourcen/Figur1/LaufenRechts/Sprung1_";
+	private static final String ImagePathRechts = "Ressourcen/Figur1/LaufenRechts/Turtle";
+	//private static final String ImagePathRechts = "Ressourcen/Figur1/LaufenRechts/Figur";
+	//private static final String ImagePathRechtsSprung = "Ressourcen/Figur1/LaufenRechts/Sprung1_";
+	private static final String ImagePathRechtsSprung = "Ressourcen/Figur1/LaufenRechts/TurtleSprung_";
 	private int iXPos = 0;
 	private int iYPos = 0;
 	private boolean visible = false;
@@ -48,8 +50,8 @@ public class Figur {
 		try {
 			this.myImageObserver = io;
 			BildfolgeLinks = new BufferedImage[12];
-			BildfolgeRechts = new BufferedImage[12];
-			BildfolgeRechtsSprung = new BufferedImage[3];
+			BildfolgeRechts = new BufferedImage[4];
+			BildfolgeRechtsSprung = new BufferedImage[8];
 			LadeImage();
 		} catch (IOException ex) {
 			Logger.getLogger(Figur.class.getName()).log(Level.SEVERE, null, ex);
@@ -63,7 +65,7 @@ public class Figur {
 				Verzoegerung = 0;
 				if (myAnimiStart){
 						myBildNr++;
-						if (myBildNr == 12) {
+						if (myBildNr == 4) {
 							myBildNr = 1;
 							myAnimiStart = false;
 						}	
@@ -85,7 +87,7 @@ public class Figur {
 					if (sprung) {						
 							if (myAnimiStart){
 									myBildNr=1;
-									if (myBildNr == 3) {
+									if (myBildNr == 8) {
 										myBildNr = 1;
 										myAnimiStart = false;
 									}	
@@ -130,12 +132,12 @@ public class Figur {
 	private void LadeImage() throws IOException {
 		int i1 = 0;
 		int is = 0;
-		for (int i = 0; i < 12; i++) {
+		for (int i = 0; i < 4; i++) {
 			i1++;
 			BildfolgeLinks[i] = ImageIO.read(getClass().getClassLoader().getResource(ImagePathLinks + i1 + ".png"));
 			BildfolgeRechts[i] = ImageIO.read(getClass().getClassLoader().getResource(ImagePathRechts + i1 + ".png"));
 		}
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < 8; i++) {
 			is++;
 			BildfolgeRechtsSprung[i] = ImageIO.read(getClass().getClassLoader().getResource(ImagePathRechtsSprung + is + ".png"));
 		}
